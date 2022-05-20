@@ -67,7 +67,7 @@ public class Main {
 //        System.out.println("Your name is: " + name);
 //        input.close();
 
-        Point p1 = new Point(10, 10);
+        Point p1 = new Point(100, 100);
         // Point p2 = new Point();
         p1.setX(5);
         p1.setY(4);
