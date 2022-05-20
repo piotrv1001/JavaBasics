@@ -7,10 +7,10 @@ public class Main {
     }
     public static void main(String[] args) {
 
-//        int a = 5;
+//        int a = 7;
 //        int b = 6;
-//        int sum = sum(5, 6);
-//        System.out.println(a + " + " + b + " = " + (5+6));
+//        int sum = sum(7, 6);
+//        System.out.println(a + " + " + b + " = " + (7+6));
 //        System.out.println(a + " + " + b + " = " + sum(a, b));
 //        char a = 97;
 //        System.out.println(a);
