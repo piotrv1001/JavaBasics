@@ -1,10 +1,12 @@
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 class Point{
 
-    private int x = 0;
-    private int y = 0;
+    private int x;
+    private int y;
 
     public Point(int x, int y){
         this.x = x;
@@ -28,11 +30,63 @@ class Point{
     }
 }
 
+class Node{
+
+    public int data;
+    public Node left;
+    public Node right;
+
+    Node(int data){
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+
 
 public class Main {
 
     static int sum(int a, int b){
         return a + b;
+    }
+
+    static void bubbleSort(ArrayList<Integer> list){
+
+        for(int i = 0; i < list.size(); i++){
+            for(int j = 0; j < list.size() - i - 1; j++){
+                if(list.get(j) > list.get(j + 1)){
+                    int temp = list.get(j);
+                    list.set(j, list.get(j + 1));
+                    list.set(j + 1, temp);
+                }
+            }
+        }
+
+    }
+
+    static void invertBinaryTree(Node root){
+
+        if(root == null)
+            return;
+
+        Node temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+        invertBinaryTree(root.left);
+        invertBinaryTree(root.right);
+
+    }
+
+    static void printInOrder(Node root){
+
+        if(root == null)
+            return;
+
+        printInOrder(root.left);
+
+        System.out.println(root.data);
+
+        printInOrder(root.right);
     }
     public static void main(String[] args) {
 
@@ -81,5 +135,33 @@ public class Main {
         }else{
             System.out.println(str1 + " is not all lowercase");
         }
+
+        ArrayList<Integer> mList = new ArrayList<>();
+        mList.add(6);
+        mList.add(5);
+        mList.add(3);
+        mList.add(9);
+        mList.add(7);
+        mList.add(2);
+        bubbleSort(mList);
+        for(int item: mList){
+            System.out.print(item + " ");
+        }
+        System.out.println("");
+
+        Node root = new Node(1);
+        Node second = new Node(2);
+        Node third = new Node(3);
+        Node fourth = new Node(4);
+        Node fifth = new Node(5);
+        root.left = second;
+        root.right = third;
+        second.left = fourth;
+        second.right = fifth;
+        System.out.println("Initial binary tree:");
+        printInOrder(root);
+        invertBinaryTree(root);
+        System.out.println("Inverted binary tree:");
+        printInOrder(root);
     }
 }
