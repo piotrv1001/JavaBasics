@@ -97,7 +97,7 @@ public class Main {
 //        System.out.println(a + " + " + b + " = " + sum(a, b));
 //        char a = 97;
 //        System.out.println(a);
-        String str = "Hello world";
+        String str = "Hello world again";
         String[] strings = str.split(" ");
         for(int i = 0; i < strings.length; i++){
             System.out.println("Word " + (i + 1) + ": " + strings[i]);
