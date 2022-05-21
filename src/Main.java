@@ -43,7 +43,94 @@ class Node{
     }
 }
 
+class Animal{
 
+    protected String name;
+    protected String type;
+
+    Animal(){
+        System.out.println("Constructed animal");
+    }
+    Animal(String type){
+        this();
+        this.type = type;
+        System.out.println("Type: " + this.type);
+    }
+    public void eat(){
+        System.out.println("Animal eat");
+    }
+
+    public void displayName(){
+        System.out.println("My name is: " + this.name);
+    }
+}
+
+class Dog extends Animal{
+
+    Dog(){
+        super("Animal");
+        System.out.println("Constructed dog");
+    }
+    @Override
+    public void eat() {
+        //super.eat();
+        System.out.println("Dog eat");
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+}
+
+abstract class Vehicle{
+
+    abstract void brake();
+}
+
+class Bike extends Vehicle{
+
+    @Override
+    public void brake(){
+        System.out.println("Bike braking");
+    }
+}
+
+class Car extends Vehicle{
+
+
+    @Override
+    public void brake() {
+        System.out.println("Car braking");
+    }
+}
+
+interface Polygon{
+
+    float getArea(int a, int b);
+
+    int getPerimeter(int... args2);
+}
+
+class Rectangle implements Polygon{
+
+    @Override
+    public float getArea(int a, int b) {
+        return a * b;
+    }
+
+    @Override
+    public int getPerimeter(int... args) {
+        if (args.length != 4){
+            System.out.println("Provided too many or too little arguments");
+            return -1;
+        }
+        int sum = 0;
+        for(int arg : args){
+            sum += arg;
+        }
+        return sum;
+    }
+}
 public class Main {
 
     static int sum(int a, int b){
@@ -61,7 +148,6 @@ public class Main {
                 }
             }
         }
-
     }
 
     static void invertBinaryTree(Node root){
@@ -163,5 +249,19 @@ public class Main {
         invertBinaryTree(root);
         System.out.println("Inverted binary tree:");
         printInOrder(root);
+
+        Dog dog = new Dog();
+        dog.eat();
+        dog.setName("Rex");
+        dog.displayName();
+
+        Car car = new Car();
+        Bike bike = new Bike();
+        car.brake();
+        bike.brake();
+
+        Rectangle rect = new Rectangle();
+        System.out.println("Perimeter is: " + rect.getPerimeter(1, 1, 2, 2));
+        System.out.println("Perimeter is: " + rect.getPerimeter(1, 2));
     }
 }
